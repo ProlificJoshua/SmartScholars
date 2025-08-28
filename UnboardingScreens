@@ -1,0 +1,191 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: WelcomePage(),
+    );
+  }
+}
+// ---------------- WELCOME PAGE ----------------
+class WelcomePage extends StatelessWidget {
+  @override
+ Widget build(BuildContext context) {
+   return Scaffold(
+    body: Center(
+   child: Padding(
+    padding: EdgeInsets.all(16),
+    child: Column(
+   mainAxisAlignment: MainAxisAlignment.center,
+   children: [
+       Container(
+   height: 200,
+   width: 250,
+   color: Colors.blue[200],
+  child: Center(child: Text("Image here")),
+              ),
+   SizedBox(height: 25),
+    Text(
+  "Track Your Progress\nSee how far you’ve come and what’s next.",
+  textAlign: TextAlign.center,
+              ),
+  SizedBox(height: 30),
+   ElevatedButton(
+ onPressed: () {
+  Navigator.push(context
+        MaterialPageRoute(builder: (_) => RolePage()));
+                },
+                child: Text("Next"),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ---------------- ROLE PAGE ----------------
+class RolePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+  return Scaffold(
+   body: Center(
+  child: Column(
+  mainAxisAlignment: MainAxisAlignment.center,
+  children: [
+  Text(
+    "Register as",
+  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+  SizedBox(height: 20),
+  ElevatedButton(
+  onPressed: () {
+  Navigator.push(context,
+  MaterialPageRoute(builder: (_) => LoginPage(role: "Student")));
+              },
+  child: Text("Student"),
+            ),
+   ElevatedButton(
+   onPressed: () {
+   Navigator.push(context,
+   MaterialPageRoute(builder: (_) => LoginPage(role: "Teacher")));
+      },
+  child: Text("Teacher"),
+  ),
+  ElevatedButton(
+   onPressed: () {
+    Navigator.push(context,
+   MaterialPageRoute(builder: (_) => LoginPage(role: "Parent")));
+              },
+  child: Text("Parent"),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+// ---------------- LOGIN PAGE ----------------
+class LoginPage extends StatefulWidget {
+  final String role;
+  LoginPage({required this.role});
+
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  var myEmail = TextEditingController();
+  var myName = TextEditingController();
+  var myPassword = TextEditingController();
+  var myClass = TextEditingController();
+  var myCountry = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+  appBar: AppBar(title: Text("SmartScholars")),
+  body: Padding(
+  padding: EdgeInsets.all(18),
+  child: ListView(
+   children: [
+  SizedBox(height: 10),
+   Text(
+   "Sign in as ${widget.role}",
+  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+  SizedBox(height: 18),
+   TextField(
+  controller: myEmail,
+  decoration: InputDecoration(
+   hintText: "Email address",
+  fillColor: Colors.grey[300],
+  filled: true,
+              ),
+            ),
+  SizedBox(height: 12),
+   TextField(
+  controller: myName,
+   decoration: InputDecoration(
+  hintText: "Full Name",
+   fillColor: Colors.grey[300],
+  filled: true,
+              ),
+            ),
+  SizedBox(height: 12),
+   TextField(
+   controller: myPassword,
+   obscureText: true,
+   decoration: InputDecoration(
+   hintText: "Password",
+   fillColor: Colors.grey[300],
+  filled: true,
+              ),
+  
+  ),
+  SizedBox(height: 12),
+   TextField(
+  controller: myClass,
+  decoration: InputDecoration(
+  hintText: "Class / Grade",
+  fillColor: Colors.grey[300],
+  filled: true,
+              ),
+            ),
+  SizedBox(height: 12),
+  TextField(
+   controller: myCountry,
+  decoration: InputDecoration(
+  hintText: "Country",
+  fillColor: Colors.grey[300],
+  filled: true,
+              ),
+            ),
+   SizedBox(height: 20),
+  ElevatedButton(
+  onPressed: () {
+  print("Created account for ${widget.role}");
+  ScaffoldMessenger.of(context).showSnackBar(
+  SnackBar(content: Text("Account created for ${widget.role}")),
+                );
+              },
+  child: Text("Create Account"),
+            ),
+   SizedBox(height: 20),
+  Text(
+    "Already have an account? Login",
+ textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
