@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "hello_world_app" "\0"
+            VALUE "CompanyName", "com.smartscholars" "\0"
+            VALUE "FileDescription", "smart_scholars" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "hello_world_app" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2025 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "hello_world_app.exe" "\0"
-            VALUE "ProductName", "hello_world_app" "\0"
+            VALUE "InternalName", "smart_scholars" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2025 com.smartscholars. All rights reserved." "\0"
+            VALUE "OriginalFilename", "smart_scholars.exe" "\0"
+            VALUE "ProductName", "smart_scholars" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
